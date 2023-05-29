@@ -1,0 +1,4 @@
+{
+  "dbUrl": "mongodb+srv://andii:somePassword123@cloud.bfhwftb.mongodb.net/?retryWrites=true&w=majority",
+  "serverPort": 5000
+}
