@@ -2,7 +2,6 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit'
 import userReducer from './userReducer'
 import fileReducer from './fileReducer'
 
-
 const rootReducer = combineReducers({
   user: userReducer,
   files: fileReducer
