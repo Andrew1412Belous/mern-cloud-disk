@@ -16,4 +16,12 @@
     grid-column-start: 6;
     justify-self: center;
   }
+  &__empty {
+    height: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }

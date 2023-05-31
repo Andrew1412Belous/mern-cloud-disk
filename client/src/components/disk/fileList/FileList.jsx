@@ -6,7 +6,7 @@ import './fileList.scss'
 const FileList = () => {
   const files = useSelector(state => state.files.files).map(file => <File key={file._id} file={file}/>)
 
-  return (
+  return ( files.length ?
     <div className='filelist'>
       <div className="filelist__header">
         <div className="filelist__name">Название</div>
@@ -15,6 +15,8 @@ const FileList = () => {
       </div>
       {files}
     </div>
+    :
+    <div className="filelist__empty">This folder is still empty...</div>
   );
 };
 
