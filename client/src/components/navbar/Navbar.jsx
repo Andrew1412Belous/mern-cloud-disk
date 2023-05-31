@@ -18,7 +18,7 @@ const Navbar = () => {
           <div className="navbar__header">MERN CLOUD</div>
 
           {!isAuth && <div className="navbar__login"><NavLink to="/login">Sign in</NavLink></div>}
-          {!isAuth && <div className="navbar__registration"><NavLink to="/authorization">Sign up</NavLink></div>}
+          {!isAuth && <div className="navbar__registration"><NavLink to="/registration">Sign up</NavLink></div>}
           {isAuth && <div className="navbar__login" onClick={() => dispatch(logout()) }>Logout</div>}
         </div>
 
