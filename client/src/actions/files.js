@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { addFile, setFiles } from '../reducers/fileReducer'
+import { addFile, deleteFileAction, setFiles } from '../reducers/fileReducer'
 import { isAllOf } from '@reduxjs/toolkit'
 
 export function getFiles (dirId) {
@@ -13,7 +13,7 @@ export function getFiles (dirId) {
 
       dispatch(setFiles(response.data))
     } catch (e) {
-      alert(e.response.data.message)
+      alert(e.response?.data?.message)
     }
   }
 }
@@ -36,7 +36,7 @@ export function createDir (dirId, name) {
       dispatch(addFile(response.data))
     } catch (e) {
       console.log(e)
-      alert(e.response.data.message)
+      alert(e.response?.data?.message)
     }
   }
 }
@@ -74,7 +74,7 @@ export function uploadFile (file, dirId) {
       dispatch(addFile(response.data))
     } catch (e) {
       console.log(e)
-      alert(e.response.data.message)
+      alert(e.response?.data?.message)
     }
   }
 }
@@ -99,5 +99,24 @@ export async function downloadFile (file) {
 
     link.click()
     link.remove()
+  }
+}
+
+export function deleteFile (file) {
+  return async dispatch => {
+    try {
+      const response = await axios.delete(`http://localhost:5000/api/files?id=${file._id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+
+      dispatch(deleteFileAction(file._id))
+
+      alert(response.data.message)
+    } catch (e) {
+      console.log(e)
+      alert(e.response?.data?.message)
+    }
   }
 }

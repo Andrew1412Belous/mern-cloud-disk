@@ -3,9 +3,9 @@ import fileLogo from '../../../../assets/img/file.svg'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { pushToStack, setCurrentDir } from '../../../../reducers/fileReducer'
+import { deleteFile, downloadFile } from '../../../../actions/files'
 
 import './file.scss'
-import { downloadFile } from '../../../../actions/files'
 
 const File = ({ file }) => {
   const dispatch = useDispatch()
@@ -20,8 +20,13 @@ const File = ({ file }) => {
 
   function downloadClickHandler (event) {
     event.stopPropagation()
-
     downloadFile(file)
+  }
+
+  function deleteClickHandler (event) {
+    event.stopPropagation()
+
+    dispatch(deleteFile(file))
   }
 
   return (
@@ -32,7 +37,7 @@ const File = ({ file }) => {
       <div className="file__size">{file.size}</div>
       {file.type !== 'dir' &&
         <button className="file__btn file__download" onClick={(event) => downloadClickHandler(event)}>Download</button>}
-      <button className="file__btn file__delete">Delete</button>
+      <button className="file__btn file__delete" onClick={(event) => deleteClickHandler(event)}>Delete</button>
     </div>
   );
 };

@@ -28,7 +28,7 @@ const Disk = () => {
     const backDirId = stack.pop()
 
     dispatch(setCurrentDir(backDirId))
-    dispatch(popFromStack(stack))
+    dispatch(popFromStack(backDirId))
   }
 
   function fileUploadHandler (event) {
