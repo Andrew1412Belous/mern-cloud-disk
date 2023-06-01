@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { createDir } from '../../actions/files'
+import { createDir } from '../../actions/file'
 import Input from '../../utils/input/Input'
 import { setPopupDisplay } from '../../reducers/fileReducer'
 

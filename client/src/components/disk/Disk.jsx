@@ -1,11 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { getFiles, uploadFile } from '../../actions/files'
+import { getFiles, uploadFile } from '../../actions/file'
 import FileList from './fileList/FileList'
 import Popup from './Popup'
 import { popFromStack, setCurrentDir, setPopupDisplay } from '../../reducers/fileReducer'
 
 import './disk.scss'
+import Uploader from './uploader/Uploader'
 
 const Disk = () => {
   const [dragEnter, setDragEnter] = useState(false)
@@ -45,8 +46,6 @@ const Disk = () => {
   }
 
   function dragLeaveHandler (event) {
-    console.log(event.target)
-
     event.preventDefault()
     event.stopPropagation()
 
@@ -78,6 +77,7 @@ const Disk = () => {
       </div>
       <FileList/>
       <Popup/>
+      <Uploader/>
     </div>
     :
     <div className="drop-area"
