@@ -15,6 +15,7 @@ const Disk = () => {
   const dispatch = useDispatch()
   const currentDir = useSelector(state => state.files.currentDir)
   const dirStack = useSelector(state => state.files.dirStack)
+  const loader = useSelector(state => state.app.loader)
 
   useEffect(() => {
     dispatch(getFiles(currentDir, sort))
@@ -61,6 +62,14 @@ const Disk = () => {
     files.forEach(file => dispatch(uploadFile(file, currentDir)))
 
     setDragEnter(false)
+  }
+
+  if (loader) {
+    return (
+      <div className='loader'>
+        <div className='lds-dual-ring'></div>
+      </div>
+    )
   }
 
   return ( !dragEnter ?
