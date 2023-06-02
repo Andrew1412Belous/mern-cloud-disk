@@ -8,7 +8,16 @@ const Profile = () => {
 
   function changeHandler(e) {
     const file = e.target.files[0]
-    dispatch(uploadAvatar(file))
+
+    if (!file.type.indexOf('image')) {
+      if (file.size > 2097152) {
+        alert('Image too large\nMaximum size 2MB')
+      } else {
+        dispatch(uploadAvatar(file))
+      }
+    } else {
+      alert('Invalid type file')
+    }
   }
 
   return (
