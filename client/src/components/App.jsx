@@ -19,6 +19,7 @@ import Login from './authorization/Login'
 
 import './app.scss'
 import Disk from './disk/Disk'
+import Profile from './profile/Profile'
 
 function App() {
   const isAuth = useSelector(state => state.user.isAuth)
@@ -43,6 +44,7 @@ function App() {
               :
               <Routes>
                 <Route path='/' element={<Disk/>}/>
+                <Route path='/profile' element={<Profile/>}/>
                 <Route path='*' element={<Disk/>}/>
               </Routes>
             }

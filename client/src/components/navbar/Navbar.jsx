@@ -3,20 +3,27 @@ import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../reducers/userReducer'
 
 import Logo from '../../assets/img/navbar-logo.svg'
+import avatarLogo from '../../assets/img/avatar.svg'
 
 import './navbar.scss'
 import { useState } from 'react'
 import { getFiles, searchFile } from '../../actions/file'
 import { showLoader } from '../../reducers/appReducer'
+import { API_URL } from '../../confis'
 
 const Navbar = () => {
   const [searchName, setSearchName] = useState('')
   const [searchTimeout, setSearchTimeout] = useState(false)
 
   const currentDir = useSelector(state => state.files.currentDir)
+  const currentUser = useSelector(state => state.user.currentUser)
   const isAuth = useSelector(state => state.user.isAuth)
 
   const dispatch = useDispatch()
+
+  const avatar = currentUser.avatar
+    ? `${API_URL + currentUser.avatar}`
+    : avatarLogo
 
   function searchChangeHandler (e) {
     setSearchName(e.target.value)
@@ -50,11 +57,10 @@ const Navbar = () => {
           {!isAuth && <div className="navbar__login"><NavLink to="/login">Sign in</NavLink></div>}
           {!isAuth && <div className="navbar__registration"><NavLink to="/registration">Sign up</NavLink></div>}
           {isAuth && <div className="navbar__login" onClick={() => dispatch(logout()) }>Logout</div>}
+          {isAuth && <NavLink to='/profile'>
+            <img className="navbar__avatar" src={avatar} alt="avatar logo"/>
+          </NavLink>}
         </div>
-
-        {/*{isAuth && <NavLink to='/profile'>*/}
-        {/*  <img className="navbar__avatar" src={avatar} alt=""/>*/}
-        {/*</NavLink>}*/}
       </div>
   );
 };

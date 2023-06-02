@@ -2,5 +2,6 @@
   "dbUrl": "mongodb+srv://andii:somePassword123@cloud.bfhwftb.mongodb.net/?retryWrites=true&w=majority",
   "serverPort": 5000,
   "secretKey": "mern-cloud-disk",
-  "filePath": "C:\\work\\projects\\Fullstack\\Cloud-disk\\server\\files"
+  "filePath": "C:\\work\\projects\\Fullstack\\Cloud-disk\\server\\files",
+  "staticPath": "C:\\work\\projects\\Fullstack\\Cloud-disk\\server\\static"
 }
