@@ -6,6 +6,7 @@ import { pushToStack, setCurrentDir } from '../../../../reducers/fileReducer'
 import { deleteFile, downloadFile } from '../../../../actions/file'
 
 import './file.scss'
+import sizeFormat from '../../../../utils/sizeFormat'
 
 const File = ({ file }) => {
   const dispatch = useDispatch()
@@ -36,7 +37,7 @@ const File = ({ file }) => {
         ? `${file.name.slice(0, 50)}...`
         : file.name}</div>
       <div className="file__date">{file.date.slice(0,10)}</div>
-      <div className="file__size">{file.size}</div>
+      <div className="file__size">{sizeFormat(file.size)}</div>
       {file.type !== 'dir' &&
         <button className="file__btn file__download" onClick={(event) => downloadClickHandler(event)}>Download</button>}
       <button className="file__btn file__delete" onClick={(event) => deleteClickHandler(event)}>Delete</button>
