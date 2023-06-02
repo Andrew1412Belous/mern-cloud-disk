@@ -1,15 +1,16 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../reducers/userReducer'
+
+import { useState } from 'react'
+import { getFiles, searchFile } from '../../actions/file'
+import { showLoader } from '../../reducers/appReducer'
+import { API_URL } from '../../confis'
 
 import Logo from '../../assets/img/navbar-logo.svg'
 import avatarLogo from '../../assets/img/avatar.svg'
 
 import './navbar.scss'
-import { useState } from 'react'
-import { getFiles, searchFile } from '../../actions/file'
-import { showLoader } from '../../reducers/appReducer'
-import { API_URL } from '../../confis'
 
 const Navbar = () => {
   const [searchName, setSearchName] = useState('')
@@ -20,6 +21,7 @@ const Navbar = () => {
   const isAuth = useSelector(state => state.user.isAuth)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const avatar = currentUser.avatar
     ? `${API_URL + currentUser.avatar}`
@@ -46,14 +48,14 @@ const Navbar = () => {
   return (
       <div className="navbar">
         <div className="container">
-          <img src={Logo} alt="" className="navbar__logo"/>
-          <div className="navbar__header">MERN CLOUD</div>
+          <img src={Logo} alt="" className="navbar__logo" onClick={() => navigate('/')}/>
+          <div className="navbar__header" onClick={() => navigate('/')}>MERN CLOUD</div>
           {isAuth && <input
             value={searchName}
             onChange={e => searchChangeHandler(e)}
             className='navbar__search'
             type="text"
-            placeholder="Название файла..."/>}
+            placeholder="File name..."/>}
           {!isAuth && <div className="navbar__login"><NavLink to="/login">Sign in</NavLink></div>}
           {!isAuth && <div className="navbar__registration"><NavLink to="/registration">Sign up</NavLink></div>}
           {isAuth && <div className="navbar__login" onClick={() => dispatch(logout()) }>Logout</div>}

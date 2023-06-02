@@ -22,9 +22,12 @@
   }
   &__close {
     padding: 3px;
+    background-color: $btn-bg;
+    border-radius: 100%;
+    border: 1px solid $font-color;
+    width: 26px;
   }
 }
-
 
 .upload-file {
   background-color: $background-color;
@@ -52,5 +55,10 @@
     color: $background-color;
     left: 50%;
     position: absolute;
+  }
+  &__remove {
+    height: 10px;
+    background-color: $background-color;
+    border: none;
   }
 }

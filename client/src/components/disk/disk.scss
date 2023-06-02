@@ -5,6 +5,7 @@
 
   &__btns {
     display: flex;
+    align-items: flex-start;
   }
 
   &__create {
@@ -24,6 +25,16 @@
   }
   &__select {
     margin-left: auto;
+    font-size: 14px;
+    border: 1px solid $font-color;
+    background-color: $background-color;
+    border-radius: 4px;
+    color: $font-color;
+    font-weight: 400;
+    cursor: pointer;
+    &:hover {
+      background-color: $btn-bg;
+    }
   }
   &__list, &__plate {
     height: 20px;
@@ -41,6 +52,19 @@
   &__plate {
     background-image: url("../../assets/img/plate.svg");
   }
+  &__create, &__back {
+    padding: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid $font-color;
+    background-color: $background-color;
+    border-radius: 4px;
+    color: $font-color;
+    font-weight: 400;
+    &:hover {
+      background-color: $btn-bg;
+    }
+  }
 }
 
 .drop-area {
@@ -55,6 +79,9 @@
 }
 
 .popup {
+  &__title {
+    font-size: 24px;
+  }
   width: 100%;
   height: 100vh;
   background: rgba(0,0,0,0.5);
@@ -66,18 +93,26 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   &__content {
     width: 400px;
-    background: white;
+    background: $background-color;
     padding: 20px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   &__create {
     align-self: flex-end;
+    font-size: 18px;
+    border: none;
+    background-color: $font-color;
+    border-radius: 8px;
+    color: $background-color;
+    font-weight: 700;
+    padding: 5px 10px;
+    margin-top: 10px;
   }
 
   &__header {
@@ -87,6 +122,17 @@
 
   input {
     margin: 20px 0;
+    font-size: 18px;
+  }
+  &__close {
+    background-color: $background-color;
+    font-size: 18px;
+    border: none;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 3px;
+    right: 3px;
   }
 }
 

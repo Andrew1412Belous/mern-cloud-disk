@@ -1,6 +1,8 @@
 import { useDispatch } from 'react-redux'
 import { deleteAvatar, uploadAvatar } from '../../actions/user'
 
+import './profile.scss'
+
 const Profile = () => {
   const dispatch = useDispatch()
 
@@ -10,8 +12,8 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <button onClick={() => dispatch(deleteAvatar())}>Delete avatar</button>
+    <div className='profile'>
+      <button className='profile__btn' onClick={() => dispatch(deleteAvatar())}>Delete avatar</button>
       <input accept="image/*" onChange={e => changeHandler(e)} type="file" placeholder="Upload avatar"/>
     </div>
   );

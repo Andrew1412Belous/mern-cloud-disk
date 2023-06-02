@@ -7,19 +7,18 @@ import {
   BrowserRouter,
   Routes,
   Route,
-
 } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { auth } from '../actions/user'
 
-import Navbar from './navbar/Navbar'
-import Registration from './authorization/Registration'
-import Login from './authorization/Login'
-
 import './app.scss'
-import Disk from './disk/Disk'
-import Profile from './profile/Profile'
+
+const Login = lazy(() => import('./authorization/Login'))
+const Registration = lazy(() => import('./authorization/Registration'))
+const Navbar = lazy(() => import('./navbar/Navbar'))
+const Disk = lazy(() => import('./disk/Disk'))
+const Profile = lazy(() => import('./profile/Profile'))
 
 function App() {
   const isAuth = useSelector(state => state.user.isAuth)

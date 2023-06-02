@@ -2,18 +2,16 @@
 
 .file {
   margin: 10px 0;
-  border-bottom: solid 2px $font-color ;
+  border-bottom: solid 2px $font-color;
   display: grid;
   grid-template-columns: 1fr 4fr repeat(4, 1fr);
   align-items: center;
-
   &:hover {
     transform: scale(1.02);
   }
   &__img {
     justify-self: center;
   }
-
   &__date {
     grid-column-start: 5;
     justify-self: center;
@@ -24,6 +22,13 @@
   }
   &__btn {
     display: none;
+    cursor: pointer;
+    background: $btn-bg;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    color: $font-color;
+    padding: 5px 10px;
   }
 
   &:hover &__date {
@@ -35,10 +40,12 @@
   &:hover &__download {
     grid-column-start: 5;
     display: block;
+    margin: 0 auto;
   }
   &:hover &__delete {
     grid-column-start: 6;
     display: block;
+    margin: 0 auto;
   }
 }
 
@@ -58,5 +65,22 @@
   }
   &:hover &__btns {
     display: flex;
+    justify-content: space-between;
+  }
+  &__btn {
+    padding: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid $font-color;
+    background-color: $background-color;
+    border-radius: 4px;
+    color: $font-color;
+    font-weight: 400;
+    &:first-child {
+      margin-right: 5px;
+    }
+    &:hover {
+      background-color: $btn-bg;
+    }
   }
 }

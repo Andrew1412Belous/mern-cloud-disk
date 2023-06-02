@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import Input from '../../utils/input/Input'
 import { registration } from '../../actions/user'
+
+import Input from '../../utils/input/Input'
 
 import './authorization.scss'
 

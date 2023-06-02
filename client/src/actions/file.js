@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { addFile, deleteFileAction, setFiles } from '../reducers/fileReducer'
-import { isAllOf } from '@reduxjs/toolkit'
 import { addUploadFile, changeUploadFile, showUploader } from '../reducers/uploadReducer'
 import { hideLoader, showLoader } from '../reducers/appReducer'
 import { API_URL } from '../confis'
@@ -10,7 +9,7 @@ export function getFiles (dirId, sort) {
     try {
       dispatch(showLoader())
 
-      let url = '${API_URL}api/files'
+      let url = `${API_URL}api/files`
 
       if (dirId) {
         url = `${API_URL}api/files?parent=${dirId}`

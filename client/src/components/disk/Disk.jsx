@@ -1,12 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { getFiles, uploadFile } from '../../actions/file'
+
 import FileList from './fileList/FileList'
 import Popup from './Popup'
-import { popFromStack, setCurrentDir, setFileView, setPopupDisplay } from '../../reducers/fileReducer'
+import Uploader from './uploader/Uploader'
+
+import {
+  popFromStack,
+  setCurrentDir,
+  setFileView,
+  setPopupDisplay
+} from '../../reducers/fileReducer'
 
 import './disk.scss'
-import Uploader from './uploader/Uploader'
 
 const Disk = () => {
   const [dragEnter, setDragEnter] = useState(false)
@@ -78,8 +85,8 @@ const Disk = () => {
          onDragLeave={dragLeaveHandler}
          onDragOver={dragEnterHandler}>
       <div className="disk__btns">
-        <button className="disk__back" onClick={() => backClickHandler()}>Назад</button>
-        <button className="disk__create" onClick={() => showPopupHandler()}>Создать папку</button>
+        <button className="disk__back" onClick={() => backClickHandler()}>Back</button>
+        <button className="disk__create" onClick={() => showPopupHandler()}>Create folder</button>
         <div className="disk__upload">
           <label htmlFor="disk__upload-input" className="disk__upload-label">Upload file</label>
           <input multiple={true} onChange={event => fileUploadHandler(event)} type="file" id="disk__upload-input" className="disk__upload-input"/>
@@ -104,7 +111,7 @@ const Disk = () => {
          onDragEnter={dragEnterHandler}
          onDragLeave={dragLeaveHandler}
          onDragOver={dragEnterHandler}>
-      Перетащите файлы сюда
+      Drag files here
     </div>
   );
 };
