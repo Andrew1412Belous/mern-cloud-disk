@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { getFiles, uploadFile } from '../../actions/file'
 import FileList from './fileList/FileList'
 import Popup from './Popup'
-import { popFromStack, setCurrentDir, setPopupDisplay } from '../../reducers/fileReducer'
+import { popFromStack, setCurrentDir, setFileView, setPopupDisplay } from '../../reducers/fileReducer'
 
 import './disk.scss'
 import Uploader from './uploader/Uploader'
@@ -91,6 +91,8 @@ const Disk = () => {
           <option value="type">By type</option>
           <option value="date">By date</option>
         </select>
+        <button className="disk__plate" onClick={() => dispatch(setFileView('plate'))}/>
+        <button className="disk__list" onClick={() => dispatch(setFileView('list'))}/>
       </div>
       <FileList/>
       <Popup/>

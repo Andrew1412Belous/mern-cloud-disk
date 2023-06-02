@@ -30,6 +30,12 @@
   animation: file-enter 500ms forwards;
 }
 
+.fileplate {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
 @keyframes file-enter {
   0% {
     opacity: 0;
